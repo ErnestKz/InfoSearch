@@ -1,0 +1,6 @@
+[submodule "cs7is3-lucene-tutorial-examples"]
+	path = cs7is3-lucene-tutorial-examples
+	url = https://github.com/ColinDaly75/cs7is3-lucene-tutorial-examples.git
+[submodule "Assignment1/trec_eval"]
+	path = Assignment1/trec_eval
+	url = git@github.com:usnistgov/trec_eval.git
