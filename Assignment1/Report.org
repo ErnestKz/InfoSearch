@@ -1,0 +1,24 @@
+#+Title: Information Retrieval - Assignment 1
+
+* Analyzers
+** EnglishAnalyzer
+
+* Indexing
+Process of indexing.
+Uses the analyzer to tokenize and augment the terms.
+The terms get stored into an inverted-index datastructure.
+Each term points to the documents that it exists in.
+
+* Similarities
+** BM25Similarity
+
+* Parsing Query
+Convetion is to use the same analyzer as the indexing stage.
+Take a query string, and tokenise it using the analyzers.
+
+* Constructing Query
+Each term token in the query will be added to a boolean query.
+
+* Searching
+
+* Metrics
