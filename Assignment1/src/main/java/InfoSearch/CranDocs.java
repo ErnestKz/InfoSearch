@@ -37,7 +37,6 @@ public class CranDocs {
 	ArrayList<Document> documents = new ArrayList<Document>();
 	for (CranDoc cranDoc : this.cranDocuments) {
 	    Document doc = new Document();
-	    System.out.println(cranDoc.id);
 	    doc.add(new TextField(INDEX_DOC_ID_FIELD, cranDoc.id, Store.YES));
 	    doc.add(new TextField(INDEX_DOC_BODY_FIELD, cranDoc.body, Store.YES));
 	    doc.add(new TextField(INDEX_DOC_AUTHOR_FIELD, cranDoc.author, Store.YES));
@@ -47,8 +46,6 @@ public class CranDocs {
 	}
 	return documents;
     }
-
- 
 
     public List<Query> cranBuildQueries(Analyzer analyzer) throws ParseException {
 	ArrayList<Query> queries = new ArrayList<Query>();

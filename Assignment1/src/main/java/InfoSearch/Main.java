@@ -51,10 +51,50 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
-	public static void main(String[] args) throws IOException, ParseException {
-	    
-	Analyzer analyzer = new EnglishAnalyzer();
-	Similarity similarity = new BM25Similarity(2.8f, 0.9f);
+
+    public static void argsMessage() {
+	System.out.println("Program expects 2 inputs, an Analyzer, a Similarity:");
+	System.out.println("Possible Analyzers:");
+	System.out.println("\t \t standard");
+	System.out.println("\t \t english");
+	System.out.println("Possible Similarities:");
+	System.out.println("\t \t tfidf");
+	System.out.println("\t \t bm25");
+	System.out.println("e.g \t . run.sh standard tfidf");
+    }
+    
+    public static void main(String[] args) throws IOException, ParseException {
+	if (args.length != 2) {
+	    argsMessage();
+	    return;
+	}
+	String inpAnalyzer = args[0];
+	String inpSimilarity = args[1];
+	Analyzer analyzer;
+	Similarity similarity;
+
+	switch (inpAnalyzer){
+	case "standard":
+	    analyzer = new StandardAnalyzer();
+	    break;
+	case "english":
+	     analyzer = new EnglishAnalyzer();
+	    break;
+	default:
+	    argsMessage();
+	    return;
+	}
+	switch (inpSimilarity){
+	case "tfidf":
+		similarity = new ClassicSimilarity();
+	    break;
+	case "bm25":
+	    similarity = new BM25Similarity(2.8f, 0.9f);
+	    break;
+	default:
+	    argsMessage();
+	    return;
+	}
 	
 	Directory indexDirectory = FSDirectory.open(Paths.get(INDEX_DIRECTORY));
 	IndexWriterConfig indexWriterConfig = new IndexWriterConfig(analyzer);
